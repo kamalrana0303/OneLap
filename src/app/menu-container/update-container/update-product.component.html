@@ -1,0 +1,36 @@
+<form [formGroup]="fg">
+    <mat-card class="card mat-elevation-z8" >
+        <mat-card-title>Update Device</mat-card-title>
+        <mat-card-content >
+            <p>
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input formControlName="name"  matInput type="text" autocomplete="off">
+                    <mat-hint *ngIf="fg.get('name').touched">Enter Device Name</mat-hint>
+                    <mat-error *ngIf="fg.get('name').touched && fg.get('name').hasError('required')">*Name is Required</mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Unique Id</mat-label>
+                    <input formControlName="uniqueId"  matInput type="text" autocomplete="off">
+                    <mat-hint *ngIf="fg.get('uniqueId').touched">Enter Unique Id</mat-hint>
+                    <mat-error *ngIf="fg.get('uniqueId').touched && fg.get('uniqueId').hasError('required')">Unique Id is Required</mat-error>
+                </mat-form-field>
+            </p>
+            <mat-card-subtitle>Attribute</mat-card-subtitle>
+            <p formGroupName="attributes">
+                <mat-form-field appearance="fill">
+                    <mat-label>Height</mat-label>
+                    <input type="number" matInput formControlName="height" autocomplete="off">
+                    <mat-hint  *ngIf="fg.get('attributes').get('height').touched">Enter Height Attribute</mat-hint>
+                    <mat-error *ngIf="fg.get('attributes').get('height').touched && fg.get('attributes').get('height').hasError('required')">Height Attribute is Required</mat-error>
+                    <mat-error *ngIf="fg.get('attributes').get('height').touched && fg.get('attributes').get('height').hasError('min')">Must be greater than or equal to 5</mat-error>
+                </mat-form-field>   
+            </p>  
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="update()" color="primary" [disabled]="fg.invalid">Update</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

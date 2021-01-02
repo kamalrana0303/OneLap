@@ -1,0 +1,12 @@
+:host{
+    width:20rem;
+    height:50rem;
+    padding:10px;
+    display: block;
+    background-color: #fff;
+    
+}
+
+.carousel{
+   width:40px;
+}

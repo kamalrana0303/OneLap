@@ -1,0 +1,45 @@
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="data" matSort>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="attributes">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Attributes</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.attributes|json}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="uniqueId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Unique Id</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.uniqueId}}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Update</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+               <button (click)="update(row)" mat-icon-button><mat-icon>launch</mat-icon></button>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef>Loading...</mat-footer-cell>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef>No Data</mat-footer-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        <mat-footer-row *matFooterRowDef="['loading']" [ngStyle]="{'opacity':!data?1:0}"></mat-footer-row>
+        <mat-footer-row *matFooterRowDef="['noData']" [ngStyle]="{'opacity':!!data && data.length==0?1:0}"></mat-footer-row>
+    </mat-table>
+    <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButton>
+</mat-paginator>
+</div>
