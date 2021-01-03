@@ -7,6 +7,7 @@ import { ProductComponent } from './product-container/product.component';
 import { ProductResolverResolver } from './product-container/product-resolver.resolver';
 
 import { UpdateProductComponent } from './update-container/update-product.component';
+import { VaryContentComponent } from './vary-content-cotainer/vary-content.component';
 
 export const menuRoutes:Routes=[
   {
@@ -19,6 +20,9 @@ export const menuRoutes:Routes=[
         path:'update/:id', component:UpdateProductComponent
       }
     ]
+  },
+  {
+    path:'vary',component:VaryContentComponent
   }
 ]
 

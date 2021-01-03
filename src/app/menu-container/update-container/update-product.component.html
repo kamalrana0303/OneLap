@@ -1,6 +1,7 @@
 <form [formGroup]="fg">
     <mat-card class="card mat-elevation-z8" >
         <mat-card-title>Update Device</mat-card-title>
+        <mat-card-subtitle><span>status:{{updated?'updated':'not updated'}}</span></mat-card-subtitle>
         <mat-card-content >
             <p>
                 <mat-form-field>
@@ -29,8 +30,10 @@
                 </mat-form-field>   
             </p>  
         </mat-card-content>
+
         <mat-card-actions>
             <button mat-raised-button (click)="update()" color="primary" [disabled]="fg.invalid">Update</button>
         </mat-card-actions>
+
     </mat-card>
 </form>

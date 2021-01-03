@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContactService, devices } from 'src/app/contact.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { ContactService, devices } from 'src/app/contact.service';
 })
 
 export class UpdateProductComponent implements OnInit {
+  updated:boolean=false;
   devices:devices={
     id:-1,
     name:'',
@@ -18,7 +19,7 @@ export class UpdateProductComponent implements OnInit {
   };
   
   fg:FormGroup;
-  constructor(private route:ActivatedRoute, private fb:FormBuilder, private service:ContactService) { 
+  constructor(private route:ActivatedRoute, private fb:FormBuilder, private service:ContactService, private router:Router) { 
     
   }
 
@@ -43,10 +44,13 @@ export class UpdateProductComponent implements OnInit {
   }
   update(){
     this.service.update(this.fg.value).subscribe(res=>{
-      if(!!res){
-        
-      }
       
+      if(!!res){
+        this.updated=true;
+        this.router.navigate(["menu/devices"]);
+      }else{
+        this.updated=false;
+      }
     });
   }
 

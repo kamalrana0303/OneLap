@@ -10,13 +10,15 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { AddProductComponent } from './carousel-product-container/add-product.component';
 import { UpdateProductComponent } from './update-container/update-product.component';
 import { MatCarouselModule } from 'ng-mat-carousel';
+import { VaryContentComponent } from './vary-content-cotainer/vary-content.component';
 
 @NgModule({
   declarations: [
     MenuComponent, 
     NavigatorComponent, 
     ProductComponent, UpdateProductComponent,
-    AddProductComponent
+    AddProductComponent,
+    VaryContentComponent
     
   ],
   imports: [

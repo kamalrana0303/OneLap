@@ -1,0 +1,8 @@
+<mat-card class="mat-elevation-z8">
+    <mat-card-header>
+        <p>{{slide.substring(slide.lastIndexOf('/')+1, slide.lastIndexOf('.')+1)}} Sample</p>
+    </mat-card-header>
+    <mat-card-content>
+        <img [src]="slide" style="height:600px; width:300px">
+    </mat-card-content>
+</mat-card>
